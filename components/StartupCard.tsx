@@ -1,20 +1,12 @@
 import { EyeIcon } from "lucide-react";
 import Link from "next/link";
 import { Button } from "./ui/button";
+import { Author, Startup } from "@/sanity/types";
 
-type StartupCardType = {
-    _createdAt: string;
-    views: number;
-    author: { _id: number, name: string };
-    _id: number;
-    description: string;
-    image: string;
-    category: string;
-    title: string;
-};
+export type StartupTypeCard = Omit<Startup, "author"> & {author? : Author};
 
-const StartupCard = ({ post }: { post: StartupCardType }) => {
-    const { _createdAt, views, author: { _id: authorId, name }, _id, description, image, category, title } = post;
+const StartupCard = ({ post }: { post: StartupTypeCard }) => {
+    const { _createdAt, views, author, _id, description, image, category, title } = post;
 
     return (
         <li className='startup-card group'>
@@ -31,8 +23,8 @@ const StartupCard = ({ post }: { post: StartupCardType }) => {
 
             <div className="flex-between mt-5 gap-5">
                 <div>
-                    <Link href={`/user/${authorId}`}>
-                        <p>{name}</p>
+                    <Link href={`/user/${author?._id}`}>
+                        <p>{author?.name}</p>
                     </Link>
 
                     <Link href={`/startup/${_id}`}>
@@ -42,7 +34,7 @@ const StartupCard = ({ post }: { post: StartupCardType }) => {
                     </Link>
                 </div>
 
-                <Link href={`/user/${authorId}`}>
+                <Link href={`/user/${author?._id}`}>
                     <img src="https://placehold.co/48x48" alt="placeholder" className='w-[48px] h-[48px] object-cover rounded-full' />
                 </Link>
             </div>
@@ -56,7 +48,7 @@ const StartupCard = ({ post }: { post: StartupCardType }) => {
             </Link>
 
             <div className="flex-between gap-3 mt-5">
-                <Link href={`/query=${category.toLowerCase()}`}>
+                <Link href={`/query=${category?.toLowerCase()}`}>
                     <p>{category}</p>
                 </Link>
                 <Button className="startup-card_btn" asChild>
