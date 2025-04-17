@@ -14,7 +14,7 @@ export default async function Home({searchParams}: { searchParams: Promise<{quer
 
   return (
     <>
-      <section className="pink_container pattern">
+      <section className="pink_container pattern  min-h-[530px]">
         <h1 className="heading">Pitch your startup, <br />
           Connect with Entrepreneurs
         </h1>

@@ -82,11 +82,11 @@
   }
 
   .pink_container {
-      @apply w-full bg-primary-default min-h-[530px] flex justify-center items-center flex-col py-10 px-6 border-b-2 border-t-2 border-black;
+      @apply w-full bg-primary-default flex justify-center items-center flex-col py-10 px-6 border-b-2 border-t-2 border-black;
   }
 
   .tag {
-      @apply bg-secondary px-6 py-3 font-work-sans font-bold rounded-sm uppercase relative;
+      @apply bg-secondary px-6 py-3 font-work-sans font-bold rounded-sm uppercase relative border-black border-2;
   }
 
   .heading {
